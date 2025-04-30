@@ -5,9 +5,7 @@ Este projeto realiza uma análise ETL de um dataset de ataques de ciberseguranç
 ## Estrutura do Projeto
 
 - `etl/`: Scripts de extração, transformação e carregamento
-  - `download_data.py`: Script para carregar dataset local
-  - `load_to_postgres.py`: Script para carregar dados no PostgreSQL
-  - `normalize_dimensions.py`: Script para normalizar as dimensões
+- `etl_pipeline.py`: Script principal que executa todo o processo ETL
 - `data/`: Pasta para armazenamento dos dados brutos
 - `visualizations/`: Imagens das visualizações geradas
 - `config/`: Configurações do projeto
@@ -87,17 +85,15 @@ docker rm -f postgres-cybersecurity metabase-cybersecurity
 data/cybersecurity_attacks.csv
 ```
 
-2. Execute os scripts ETL:
+2. Execute o script ETL:
 ```bash
-# Verificar se o arquivo está correto
-python etl/download_data.py
-
-# Carregar dados no PostgreSQL
-python etl/load_to_postgres.py
-
-# Normalizar dimensões
-python etl/normalize_dimensions.py
+python etl/etl_pipeline.py
 ```
+
+O script irá:
+- Extrair os dados do arquivo CSV
+- Transformar os dados em dimensões
+- Carregar as dimensões no PostgreSQL
 
 ## Visualizações no Metabase
 
