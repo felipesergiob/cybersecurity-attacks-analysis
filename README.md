@@ -104,17 +104,17 @@ python etl/normalize_dimensions.py
 1. Acesse o Metabase: http://localhost:3000
 
 2. Configure a conexão com o PostgreSQL:
-   - Host: postgres-cybersecurity
-   - Port: 5432
-   - Database: cybersecurity
-   - Username: postgres
-   - Password: postgres
+   - Host: ${POSTGRES_HOST}
+   - Port: ${POSTGRES_PORT}
+   - Database: ${POSTGRES_DB}
+   - Username: ${POSTGRES_USER}
+   - Password: ${POSTGRES_PASSWORD}
 
 3. Crie as visualizações usando as queries:
 
 ### Visualização 1: Distribuição de Ataques por Tipo e Severidade
 ```sql
-SELECT 
+SELECT
     at.attack_type as "Tipo de Ataque",
     s.severity as "Nível de Severidade",
     COUNT(*) as "Total de Ataques"
